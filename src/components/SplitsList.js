@@ -16,7 +16,7 @@ const SplitsList = () => {
 					<tr>
 						<th>Number</th>
 						<th>Time</th>
-						<th>Total Time</th>
+						<th className="total-time">Total Time</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -35,7 +35,7 @@ const SplitsList = () => {
 								<tr key={number}>
 									<td>{number}</td>
 									<td>{`${hours}:${minutes}:${seconds}`}</td>
-									<td>{`${totalHours}:${totalMinutes}:${totalSeconds}`}</td>
+									<td className="total-time">{`${totalHours}:${totalMinutes}:${totalSeconds}`}</td>
 								</tr>
 							);
 						})
