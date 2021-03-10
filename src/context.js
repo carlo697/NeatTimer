@@ -1,9 +1,10 @@
 import React, {useContext, useState} from "react";
+import {useLocalStorage} from "./util.js";
 
 const AppContext = React.createContext();
 
 export const AppProvider = ({children}) => {
-	const [splits, setSplits] = useState([]);
+	const [splits, setSplits] = useLocalStorage("splits", []);
 
 	const addSplit = split => {
 		const number = splits.length + 1;

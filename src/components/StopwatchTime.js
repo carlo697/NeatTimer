@@ -1,19 +1,19 @@
 import React, {useState} from "react";
-import {useInterval, getTimeSpanStrings} from "../util.js";
+import {useInterval, useLocalStorage, getTimeSpanStrings} from "../util.js";
 import {useGlobalContext} from "../context";
 
 const StopwatchTime = () => {
 	const {addSplit, clearSplits} = useGlobalContext();
 
-	const [startTime, setStartTime] = useState(0);
-	const [isOn, setIsOn] = useState(false);
-	const [time, setTime] = useState(0);
+	const [startTime, setStartTime] = useLocalStorage("stopwatchStartTime", 0);
+	const [isOn, setIsOn] = useLocalStorage("isStopwatchOn", false);
+	const [time, setTime] = useLocalStorage("stopwatchTime", 0);
 
 	useInterval(() => {
 		const elapsedMiliseconds = Date.now() - startTime;
 		const newTime = new Date(elapsedMiliseconds);
 
-		setTime(newTime);
+		setTime(newTime.getTime());
 
 	}, isOn ? 50 : null);
 
@@ -49,7 +49,7 @@ const StopwatchTime = () => {
 			{
 				isOn ?
 						<React.Fragment>
-							<button onClick={() => addSplit(time.getTime())}>
+							<button onClick={() => addSplit(time)}>
 								Split
 							</button>
 							<button onClick={stop}>
