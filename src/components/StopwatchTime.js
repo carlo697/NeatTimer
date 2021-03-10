@@ -35,11 +35,11 @@ const StopwatchTime = () => {
 
 	return (
 		<section>
-			<div>
+			<div className="timer">
 				{
 					`${hours}:${minutes}:${seconds}`
 				}
-				<span>
+				<span className="centiseconds">
 					{
 						`.${centiseconds}`
 					}
@@ -49,19 +49,19 @@ const StopwatchTime = () => {
 			{
 				isOn ?
 						<React.Fragment>
-							<button onClick={() => addSplit(time)}>
+							<button onClick={() => addSplit(time)} className="btn btn-purple">
 								Split
 							</button>
-							<button onClick={stop}>
+							<button onClick={stop} className="btn btn-red">
 								Stop
 							</button>
 						</React.Fragment>
 					:
 						<React.Fragment>
-							<button onClick={restart}>
+							<button onClick={restart} className="btn btn-red" disabled={time === 0}>
 								Restart
 							</button>
-							<button onClick={start}>
+							<button onClick={start} className="btn btn-green">
 								Start
 							</button>
 						</React.Fragment>
