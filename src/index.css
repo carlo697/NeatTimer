@@ -144,3 +144,40 @@ th {
 		font-size: 1.5em;
 	}
 }
+
+/* Navbar */
+nav {
+	background-color: #1f2533;
+}
+
+.nav-link {
+	padding: 1em;
+	cursor: pointer;
+	color: white;
+	text-decoration: none;
+	display: inline-flex;
+	align-items: center;
+	transition: background-color 0.2s;
+}
+
+.nav-link:hover {
+	background-color: #ed1c24;
+}
+
+.nav-link.selected {
+	background-color: #ed1c24;
+}
+
+.nav-icon {
+	font-size: 2em;
+}
+
+.nav-text {
+	display: none;
+}
+
+@media (min-width: 500px) {
+	.nav-text {
+		display: initial;
+	}
+}
