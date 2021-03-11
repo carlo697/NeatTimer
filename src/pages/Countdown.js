@@ -1,11 +1,10 @@
 import React from "react";
+import CountdownTime from "../components/CountdownTime";
 
 const Countdown = () => {
 	return (
 		<main>
-			<section>
-				<h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ultricies libero turpis, non imperdiet lectus vestibulum lacinia.</h2>
-			</section>
+			<CountdownTime/>
 		</main>
 	);
 };

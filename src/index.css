@@ -78,6 +78,14 @@ button {
 	min-width: 8em;
 	transition: filter 0.2s;
 	border-radius: 0.2em;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.btn .icon {
+	font-size: 1.5em;
+	margin-right: 0.2em;
 }
 
 .btn:hover {
@@ -126,6 +134,16 @@ button {
 .btn-purple {
 	color: white;
 	background-color: #941BFB;
+}
+
+.btn-blue {
+	color: white;
+	background-color: #358BF5;
+}
+
+.btn-orange {
+	color: white;
+	background-color: #FFA02F;
 }
 
 th, td {
