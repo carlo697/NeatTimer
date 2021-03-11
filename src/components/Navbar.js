@@ -27,6 +27,7 @@ const Navbar = () => {
 
 					return (
 						<Link
+							key={index}
 							to={to}
 							className={"nav-link " + (pathname === to ? "selected" : "")}
 						>
