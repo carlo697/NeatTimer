@@ -6,6 +6,10 @@ const AppContext = React.createContext();
 export const AppProvider = ({children}) => {
 	const [splits, setSplits] = useLocalStorage("splits", []);
 
+	const [isOpenModal, setIsOpenModal] = useState(false);
+	const [modalTitle, setModalTitle] = useState("");
+	const [modalContent, setModalContent] = useState(null);
+
 	const addSplit = split => {
 		const number = splits.length + 1;
 		const totalTime = split;
@@ -22,12 +26,29 @@ export const AppProvider = ({children}) => {
 		setSplits([]);
 	};
 
+	const openModal = ({title, content}) => {
+		setIsOpenModal(true);
+		setModalTitle(title);
+		setModalContent(content);
+	}
+
+	const closeModal = () => {
+		setIsOpenModal(false);
+		setModalTitle("");
+		setModalContent(null);
+	}
+
 	return (
 		<AppContext.Provider
 			value={{
 				splits,
 				addSplit,
-				clearSplits
+				clearSplits,
+				isOpenModal,
+				modalTitle,
+				modalContent,
+				openModal,
+				closeModal,
 			}}
 		>
 			{children}

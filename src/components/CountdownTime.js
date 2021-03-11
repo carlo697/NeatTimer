@@ -4,6 +4,8 @@ import {useGlobalContext} from "../context";
 import {TiEdit} from "react-icons/ti";
 
 const CountdownTime = () => {
+	const {openModal} = useGlobalContext();
+
 	const [isOn, setIsOn] = useLocalStorage("isCountdownOn", false);
 	const [initialTime, setInitialTime] = useLocalStorage("countdownInitialTime", 60000);
 	const [startTime, setStartTime] = useLocalStorage("countdownStartTime", 0);
@@ -39,6 +41,13 @@ const CountdownTime = () => {
 		setIsOn(false);
 	};
 
+	const edit = () => {
+		openModal({
+			title: "Edit Countdown Timer",
+			content: "Example"
+		});
+	}
+
 	return (
 		<section>
 			<div className="timer">
@@ -53,7 +62,7 @@ const CountdownTime = () => {
 			</div>
 
 			<div className="btn-container">
-				<button className="btn btn-blue">
+				<button className="btn btn-blue" onClick={edit}>
 					<TiEdit className="icon"/> Edit
 				</button>
 
