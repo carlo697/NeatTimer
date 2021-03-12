@@ -10,6 +10,14 @@ export const AppProvider = ({children}) => {
 	const [modalTitle, setModalTitle] = useState("");
 	const [modalContent, setModalContent] = useState(null);
 
+	const [countdownSettings, setCountdownSettings] = useLocalStorage(
+		"countdownSettings", {
+			hours: 0,
+			minutes: 1,
+			seconds: 0
+		}
+	);
+
 	const addSplit = split => {
 		const number = splits.length + 1;
 		const totalTime = split;
@@ -18,7 +26,7 @@ export const AppProvider = ({children}) => {
 		setSplits([...splits, {
 			number,
 			totalTime,
-			time
+			time,
 		}]);
 	};
 
@@ -49,7 +57,9 @@ export const AppProvider = ({children}) => {
 				modalContent,
 				openModal,
 				closeModal,
-			}}
+				countdownSettings,
+				setCountdownSettings,
+				}}
 		>
 			{children}
 		</AppContext.Provider>

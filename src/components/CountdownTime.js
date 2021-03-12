@@ -1,17 +1,21 @@
-import React, {useState} from "react";
+import React from "react";
 import {useInterval, useLocalStorage, getTimeSpanStrings} from "../util.js";
 import {useGlobalContext} from "../context";
 import {TiEdit} from "react-icons/ti";
+import CountdownSettings from "./CountdownSettings";
 
 const CountdownTime = () => {
-	const {openModal} = useGlobalContext();
+	const {openModal, countdownSettings} = useGlobalContext();
 
 	const [isOn, setIsOn] = useLocalStorage("isCountdownOn", false);
-	const [initialTime, setInitialTime] = useLocalStorage("countdownInitialTime", 60000);
+	const initialTime = (
+		countdownSettings.hours * 3600000 +
+		countdownSettings.minutes * 60000 +
+		countdownSettings.seconds * 1000
+	);
+
 	const [startTime, setStartTime] = useLocalStorage("countdownStartTime", 0);
 	const [time, setTime] = useLocalStorage("countdownTime", initialTime);
-
-	const {hours, minutes, seconds, centiseconds} = getTimeSpanStrings(time);
 
 	useInterval(() => {
 		const elapsedMiliseconds = Date.now() - startTime;
@@ -44,9 +48,11 @@ const CountdownTime = () => {
 	const edit = () => {
 		openModal({
 			title: "Edit Countdown Timer",
-			content: "Example"
+			content: <CountdownSettings/>
 		});
 	}
+
+	const {hours, minutes, seconds, centiseconds} = getTimeSpanStrings(time);
 
 	return (
 		<section>

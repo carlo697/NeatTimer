@@ -249,4 +249,55 @@ nav {
 
 .modal-content {
 	padding: 1em;
+	font-size: 0.9em;
+}
+
+
+/* Settings */
+.input-row {
+	display: flex;
+	justify-content: space-between;
+}
+
+.input-container {
+	display: inline-block;
+	padding: 0.5em;
+}
+
+.input-container label {
+	display: block;
+	margin-bottom: 0.5em;
+}
+
+.input-container input {
+	padding: 0.5em;
+	width: 100%;
+	border-radius: 0;
+	outline: none;
+	border: solid 2px rgb(239, 239, 239);
+}
+
+.time-input-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.time-input-container button {
+	min-height: 2em;
+}
+
+.time-input-container button.down {
+	transform: rotate(180deg);
+}
+
+.time-input-container button:hover {
+	filter: brightness(0.95);
+}
+
+.time-input-container button:active {
+	filter: brightness(0.9);
+}
+
+.time-input {
+	max-width: 5em;
 }
