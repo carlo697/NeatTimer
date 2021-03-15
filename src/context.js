@@ -1,5 +1,5 @@
 import React, {useContext, useState} from "react";
-import {useLocalStorage} from "./util.js";
+import {useLocalStorage, useInterval} from "./util.js";
 
 const AppContext = React.createContext();
 
@@ -11,6 +11,7 @@ export const AppProvider = ({children}) => {
 	const [modalContent, setModalContent] = useState(null);
 	const [modalExtra, setModalExtra] = useState(null);
 
+	// countdown
 	const [countdownSettings, setCountdownSettings] = useLocalStorage(
 		"countdownSettings", {
 			hours: 0,
@@ -18,6 +19,31 @@ export const AppProvider = ({children}) => {
 			seconds: 0
 		}
 	);
+	const countdownInitialTime = (
+		countdownSettings.hours * 3600000 +
+		countdownSettings.minutes * 60000 +
+		countdownSettings.seconds * 1000
+	);
+	const [countdownOn, setCountdownOn] = useLocalStorage("countdownOn", false);
+	const [countdownStartTime, setCountdownStartTime] = useLocalStorage("countdownStartTime", 0);
+	const [countdownTime, setCountdownTime] = useLocalStorage("countdownTime", countdownInitialTime);
+
+	// check alarms
+	useInterval(() => {
+		if (countdownOn) {
+			const elapsedMiliseconds = Date.now() - countdownStartTime;
+			const newTime = new Date(elapsedMiliseconds);
+
+			if (newTime > countdownInitialTime) {
+				setCountdownOn(false);
+				setCountdownTime(0);
+				console.log("Alarm");
+				return;
+			}
+
+			setCountdownTime(countdownInitialTime - newTime.getTime());
+		}
+	}, 50);
 
 	const addSplit = split => {
 		const number = splits.length + 1;
@@ -60,8 +86,15 @@ export const AppProvider = ({children}) => {
 				openModal,
 				closeModal,
 				modalExtra,
+				// countdown
 				countdownSettings,
 				setCountdownSettings,
+				countdownTime,
+				setCountdownTime,
+				setCountdownOn,
+				setCountdownStartTime,
+				countdownOn,
+				countdownInitialTime,
 				}}
 		>
 			{children}

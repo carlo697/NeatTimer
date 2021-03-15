@@ -1,58 +1,43 @@
 import React, {useState, useEffect} from "react";
-import {useInterval, useLocalStorage, getTimeSpanStrings} from "../util.js";
+import {getTimeSpanStrings} from "../util.js";
 import {useGlobalContext} from "../context";
 import {TiEdit} from "react-icons/ti";
 import CountdownSettings from "./CountdownSettings";
 
 const CountdownTime = () => {
-	const {openModal, countdownSettings} = useGlobalContext();
-
-	const [isOn, setIsOn] = useLocalStorage("isCountdownOn", false);
-	const initialTime = (
-		countdownSettings.hours * 3600000 +
-		countdownSettings.minutes * 60000 +
-		countdownSettings.seconds * 1000
-	);
-
-	const [startTime, setStartTime] = useLocalStorage("countdownStartTime", 0);
-	const [time, setTime] = useLocalStorage("countdownTime", initialTime);
+	const {
+		openModal,
+		countdownTime,
+		setCountdownTime,
+		setCountdownOn,
+		setCountdownStartTime,
+		countdownOn,
+		countdownInitialTime
+	} = useGlobalContext();
+	
 	const [areSettingsChanged, setAreSettingsChange] = useState(false);
 
-	useInterval(() => {
-		const elapsedMiliseconds = Date.now() - startTime;
-		const newTime = new Date(elapsedMiliseconds);
-
-		if (newTime > initialTime) {
-			setIsOn(false);
-			setTime(0);
-			return;
-		}
-		
-		setTime(initialTime - newTime.getTime());
-
-	}, isOn ? 50 : null);
-
 	const start = () => {
-		setIsOn(true);
-		setStartTime(Date.now());
+		setCountdownOn(true);
+		setCountdownStartTime(Date.now());
 	};
 
 	const stop = () => {
-		setIsOn(false);
+		setCountdownOn(false);
 	};
 
 	const restart = () => {
-		setTime(initialTime);
-		setIsOn(false);
+		setCountdownTime(countdownInitialTime);
+		setCountdownOn(false);
 	};
 
 	useEffect(() => {
 		if (areSettingsChanged) {
 			setAreSettingsChange(false);
-			setIsOn(true);
-			setStartTime(Date.now());
+			setCountdownOn(true);
+			setCountdownStartTime(Date.now());
 		}
-	}, [areSettingsChanged, setTime, initialTime, setIsOn, setStartTime]);
+	}, [areSettingsChanged, setCountdownOn, setCountdownStartTime]);
 
 	const edit = () => {
 		openModal({
@@ -64,7 +49,7 @@ const CountdownTime = () => {
 		});
 	}
 
-	const {hours, minutes, seconds, centiseconds} = getTimeSpanStrings(time);
+	const {hours, minutes, seconds, centiseconds} = getTimeSpanStrings(countdownTime);
 
 	return (
 		<section>
@@ -84,12 +69,12 @@ const CountdownTime = () => {
 					<TiEdit className="icon"/> Edit
 				</button>
 
-				<button className="btn btn-orange" onClick={restart} disabled={time === initialTime}>
+				<button className="btn btn-orange" onClick={restart} disabled={countdownTime === countdownInitialTime}>
 					Restart
 				</button>
 
 				{
-					isOn ?
+					countdownOn ?
 						<button className="btn btn-red" onClick={stop}>
 							Stop
 						</button>
