@@ -1,5 +1,6 @@
 import React, {useContext, useState} from "react";
 import {useLocalStorage, useInterval} from "./util.js";
+import CountdownAlarm from "./components/CountdownAlarm";
 
 const AppContext = React.createContext();
 
@@ -37,7 +38,9 @@ export const AppProvider = ({children}) => {
 			if (newTime > countdownInitialTime) {
 				setCountdownOn(false);
 				setCountdownTime(0);
-				console.log("Alarm");
+
+				// Alarm
+				openCountdownAlarm();
 				return;
 			}
 
@@ -73,6 +76,13 @@ export const AppProvider = ({children}) => {
 		setModalTitle("");
 		setModalContent(null);
 	}
+
+	const openCountdownAlarm = () => {
+		openModal({
+			title: "Countdown",
+			content: <CountdownAlarm/>
+		});
+	};
 
 	return (
 		<AppContext.Provider

@@ -256,7 +256,7 @@ nav {
 /* Settings */
 .input-row {
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-around;
 }
 
 .input-container {
@@ -300,4 +300,34 @@ nav {
 
 .time-input {
 	max-width: 5em;
+}
+
+.modal-center {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.modal-alarm-icon {
+	margin-top: 0.2em;
+	font-size: 5em;
+	margin-bottom: 0.2em;
+	color: #358BF5;
+}
+
+.modal footer {
+	display: flex;
+	justify-content: center;
+	border-top: 1px solid gray;
+	padding-top: 1em;
+}
+
+.modal footer .btn {
+	margin-right: 0.4em;
+}
+
+.modal .timer {
+	font-size: 2em;
+	margin-bottom: 1em;
 }
