@@ -9,6 +9,7 @@ export const AppProvider = ({children}) => {
 	const [isOpenModal, setIsOpenModal] = useState(false);
 	const [modalTitle, setModalTitle] = useState("");
 	const [modalContent, setModalContent] = useState(null);
+	const [modalExtra, setModalExtra] = useState(null);
 
 	const [countdownSettings, setCountdownSettings] = useLocalStorage(
 		"countdownSettings", {
@@ -34,10 +35,11 @@ export const AppProvider = ({children}) => {
 		setSplits([]);
 	};
 
-	const openModal = ({title, content}) => {
+	const openModal = ({title, content, extra}) => {
 		setIsOpenModal(true);
 		setModalTitle(title);
 		setModalContent(content);
+		setModalExtra(extra);
 	}
 
 	const closeModal = () => {
@@ -57,6 +59,7 @@ export const AppProvider = ({children}) => {
 				modalContent,
 				openModal,
 				closeModal,
+				modalExtra,
 				countdownSettings,
 				setCountdownSettings,
 				}}
