@@ -22,9 +22,33 @@ const CountdownSettings = () => {
 		onSave();
 	}
 
+	const checkValue = (value, min, max) => {
+		let result = parseInt(value);
+		result = Math.max(min, result);
+		result = Math.min(max, result);
+		if (isNaN(result)) {
+			return min;
+		}
+		return result;
+	}
+
+	const {hours, seconds, minutes} = settings;
+
 	const handleChange = e => {
 		const name = e.target.name;
-		const value = e.target.value;
+		let value = e.target.value;
+
+		if (name === "hours") {
+			value = checkValue(value, 0, 99);
+		}
+
+		if (name === "minutes") {
+			value = checkValue(value, 0, 60);
+		}
+
+		if (name === "seconds") {
+			value = checkValue(value, 0, 60);
+		}
 
 		setSettings({
 			...settings,
@@ -32,7 +56,20 @@ const CountdownSettings = () => {
 		});
 	}
 
-	const {hours, seconds, minutes} = settings;
+	const addHours = (amount) => {
+		const newValue = checkValue(hours + amount, 0, 99);
+		setSettings({...settings, hours: newValue});
+	};
+
+	const addMinutes = (amount) => {
+		const newValue = checkValue(minutes + amount, 0, 60);
+		setSettings({...settings, minutes: newValue});
+	};
+
+	const addSeconds = (amount) => {
+		const newValue = checkValue(seconds + amount, 0, 60);
+		setSettings({...settings, seconds: newValue});
+	};
 
 	return (
 		<form>
@@ -40,18 +77,21 @@ const CountdownSettings = () => {
 				<div className="input-container">
 					<label htmlFor="hours">Hours</label>
 					<div className="time-input-container">
-						<button type="button">
+						<button type="button" onClick={() => addHours(1)}>
 							<FaAngleUp/>
 						</button>
 						<input
 							type="number"
+							step="1"
+							min="0"
+							max="99"
 							id="hours"
 							className="time-input"
 							name="hours"
 							value={hours}
 							onChange={handleChange}
 						/>
-						<button type="button" className="down">
+						<button type="button" className="down" onClick={() => addHours(-1)}>
 							<FaAngleUp/>
 						</button>
 					</div>
@@ -59,7 +99,7 @@ const CountdownSettings = () => {
 				<div className="input-container">
 					<label htmlFor="minutes">Minutes</label>
 					<div className="time-input-container">
-						<button type="button">
+						<button type="button" onClick={() => addMinutes(1)}>
 							<FaAngleUp/>
 						</button>
 						<input
@@ -70,7 +110,7 @@ const CountdownSettings = () => {
 							value={minutes}
 							onChange={handleChange}
 						/>
-						<button type="button" className="down">
+						<button type="button" className="down" onClick={() => addMinutes(-1)}>
 							<FaAngleUp/>
 						</button>
 					</div>
@@ -78,7 +118,7 @@ const CountdownSettings = () => {
 				<div className="input-container">
 					<label htmlFor="seconds">Seconds</label>
 					<div className="time-input-container">
-						<button type="button">
+						<button type="button" onClick={() => addSeconds(1)}>
 							<FaAngleUp/>
 						</button>
 						<input
@@ -89,7 +129,7 @@ const CountdownSettings = () => {
 							value={seconds}
 							onChange={handleChange}
 						/>
-						<button type="button" className="down">
+						<button type="button" className="down" onClick={() => addSeconds(-1)}>
 							<FaAngleUp/>
 						</button>
 					</div>
