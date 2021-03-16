@@ -2,6 +2,7 @@ import React from "react";
 import {Link, useLocation} from "react-router-dom";
 import { TiStopwatch } from "react-icons/ti";
 import { GiStopwatch } from "react-icons/gi";
+import { IoIosClock } from "react-icons/io";
 
 const links = [
 	{
@@ -13,6 +14,11 @@ const links = [
 		text: "Countdown",
 		to: "/countdown",
 		icon: <GiStopwatch/>,
+	},
+	{
+		text: "Clock",
+		to: "/clock",
+		icon: <IoIosClock/>,
 	},
 ];
 
