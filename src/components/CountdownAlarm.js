@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {getTimeSpanStrings} from "../util.js";
 import {useGlobalContext} from "../context";
 import { GiStopwatch } from "react-icons/gi";
@@ -12,7 +12,7 @@ const CountdownAlarm = () => {
 		setCountdownStartTime
 	} = useGlobalContext();
 
-	const {hours, minutes, seconds, centiseconds} = getTimeSpanStrings(countdownInitialTime);
+	const {hours, minutes, seconds} = getTimeSpanStrings(countdownInitialTime);
 
 	const restart = () => {
 		setCountdownTime(countdownInitialTime);

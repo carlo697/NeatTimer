@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import {useInterval, useLocalStorage, getTimeSpanStrings} from "../util.js";
 import {useGlobalContext} from "../context";
 
