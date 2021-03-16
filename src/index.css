@@ -81,6 +81,8 @@ button {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
+	font-family: 'Roboto', sans-serif;
+	font-weight: lighter;
 }
 
 .btn .icon {
@@ -89,7 +91,11 @@ button {
 }
 
 .btn:hover {
-	filter: brightness(1.2);
+	filter: brightness(0.9);
+}
+
+.btn:active {
+	filter: brightness(0.8);
 }
 
 .btn[disabled] {
@@ -103,6 +109,7 @@ button {
 .btn-container {
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 	justify-content: center;
 }
 
@@ -110,9 +117,10 @@ button {
 	margin-bottom: 1em;
 }
 
-@media (min-width: 320px) {
+@media (min-width: 460px) {
 	.btn-container {
 		flex-direction: row;
+		align-items: initial;
 	}
 
 	.btn-container .btn:not(:last-of-type) {
