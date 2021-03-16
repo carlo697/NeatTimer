@@ -1,7 +1,9 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {getTimeSpanStrings} from "../util.js";
 import {useGlobalContext} from "../context";
 import { GiStopwatch } from "react-icons/gi";
+
+import Clock from "../sounds/clock.mp3";
 
 const CountdownAlarm = () => {
 	const {
@@ -20,6 +22,16 @@ const CountdownAlarm = () => {
 		setCountdownStartTime(Date.now());
 		closeModal();
 	}
+
+	useEffect(() => {
+		const audio = new Audio(Clock);
+		audio.loop = true;
+		audio.play();
+
+		return () => {
+			audio.pause();
+		};
+	}, []);
 
 	return (
 		<React.Fragment>
