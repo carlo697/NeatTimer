@@ -1,7 +1,11 @@
-import React from "react";
+import React, {useEffect} from "react";
 import CountdownTime from "../components/CountdownTime";
 
 const Countdown = () => {
+	useEffect(() => {
+		document.title = "Neat Timer - Countdown";
+	}, []);
+
 	return (
 		<main>
 			<CountdownTime/>
