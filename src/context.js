@@ -29,6 +29,9 @@ export const AppProvider = ({children}) => {
 	const [countdownStartTime, setCountdownStartTime] = useLocalStorage("countdownStartTime", 0);
 	const [countdownTime, setCountdownTime] = useLocalStorage("countdownTime", countdownInitialTime);
 
+	// notifications
+	const [notificationPermission, setNotificationPermission] = useState(Notification.permission);
+
 	// check alarms
 	useInterval(() => {
 		if (countdownOn) {
@@ -105,6 +108,9 @@ export const AppProvider = ({children}) => {
 				setCountdownStartTime,
 				countdownOn,
 				countdownInitialTime,
+				//notifications
+				notificationPermission,
+				setNotificationPermission,
 				}}
 		>
 			{children}

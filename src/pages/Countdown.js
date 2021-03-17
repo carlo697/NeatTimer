@@ -1,5 +1,6 @@
 import React, {useEffect} from "react";
 import CountdownTime from "../components/CountdownTime";
+import NotificationRequester from "../components/NotificationRequester";
 
 const Countdown = () => {
 	useEffect(() => {
@@ -9,6 +10,7 @@ const Countdown = () => {
 	return (
 		<main>
 			<CountdownTime/>
+			<NotificationRequester/>
 		</main>
 	);
 };

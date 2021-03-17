@@ -34,6 +34,10 @@ section {
 	padding: 1.5em;
 }
 
+section p {
+	margin-bottom: 1em;
+}
+
 table {
 	margin: 0 auto;
 }
