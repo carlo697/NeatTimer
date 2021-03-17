@@ -4,6 +4,7 @@ import {useGlobalContext} from "../context";
 import { GiStopwatch } from "react-icons/gi";
 
 import Clock from "../sounds/clock.mp3";
+import NotificationIcon from "../img/notification-icon.png";
 
 const CountdownAlarm = () => {
 	const {
@@ -11,7 +12,8 @@ const CountdownAlarm = () => {
 		countdownInitialTime,
 		setCountdownTime,
 		setCountdownOn,
-		setCountdownStartTime
+		setCountdownStartTime,
+		showNotification
 	} = useGlobalContext();
 
 	const {hours, minutes, seconds} = getTimeSpanStrings(countdownInitialTime);
@@ -28,8 +30,18 @@ const CountdownAlarm = () => {
 		audio.loop = true;
 		audio.play();
 
+		const notification = showNotification(
+			"Your timer reached zero!",
+			`${hours}:${minutes}:${seconds}`,
+			NotificationIcon,
+		);
+
 		return () => {
 			audio.pause();
+
+			if (notification != null) {
+				notification.close();
+			}
 		};
 	}, []);
 

@@ -87,6 +87,17 @@ export const AppProvider = ({children}) => {
 		});
 	};
 
+	const showNotification = (title, text, icon) => {
+		if (notificationPermission === "granted") {
+			return new Notification(title, {
+				body: text,
+				icon: icon,
+			});
+		}
+
+		return null;
+	};
+
 	return (
 		<AppContext.Provider
 			value={{
@@ -111,6 +122,7 @@ export const AppProvider = ({children}) => {
 				//notifications
 				notificationPermission,
 				setNotificationPermission,
+				showNotification
 				}}
 		>
 			{children}
