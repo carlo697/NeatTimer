@@ -27,6 +27,13 @@ const Navbar = () => {
 
 	return (
 		<nav>
+			<h2 className="nav-logo">
+				<Link to="/">
+					<span className="logo-neat">Neat </span>
+					<span className="logo-timer">Timer</span>
+				</Link>
+			</h2>
+
 			{
 				links.map((link, index) => {
 					const {text, to, icon} = link;

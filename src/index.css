@@ -7,6 +7,11 @@
 	box-sizing: border-box;
 }
 
+:root {
+	--blue: #358BF5;
+	--red: #ed1c24;
+}
+
 @font-face {
 	font-family: 'DSEG7';
 	src: url(./fonts/DSEG7-Classic/DSEG7Classic-Regular.woff) format('woff');
@@ -232,9 +237,49 @@ nav {
 	display: none;
 }
 
-@media (min-width: 500px) {
+@media (min-width: 600px) {
 	.nav-text {
 		display: initial;
+	}
+}
+
+a {
+	text-decoration: none;
+	color: white;
+}
+
+.nav-logo {
+	padding: 1rem;
+	font-size: 1em;
+	display: none;
+	word-spacing: -0.1em;
+}
+
+.logo-neat {
+
+}
+
+.logo-timer {
+	
+	color: var(--red);
+}
+
+@media (min-width: 340px) {
+	.nav-logo {
+		display: inline-block;
+	}
+}
+
+@media (min-width: 400px) {
+	.nav-logo {
+		font-size: 1.3em;
+	}
+}
+
+@media (min-width: 600px) {
+	.nav-logo {
+		font-size: 1.5em;
+		padding-right: 1.5em;
 	}
 }
 
