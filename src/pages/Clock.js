@@ -21,6 +21,7 @@ const Clock = () => {
 
 	return (
 		<main>
+			<h1>Clock</h1>
 			<section>
 				<div className="timer">
 					{formattedTime}

@@ -9,6 +9,7 @@ const Countdown = () => {
 
 	return (
 		<main>
+			<h1>Countdown Timer</h1>
 			<CountdownTime/>
 			<NotificationRequester/>
 		</main>

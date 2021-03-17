@@ -24,6 +24,12 @@ main {
 	margin: 2em 2em;
 }
 
+main h1 {
+	text-align: center;
+	font-size: 2em;
+	margin-bottom: 1em;
+}
+
 section {
 	max-width: 900px;
 	text-align: center;

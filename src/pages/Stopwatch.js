@@ -9,6 +9,7 @@ const Stopwatch = () => {
 
 	return (
 		<main>
+			<h1>Stopwatch</h1>
 			<StopwatchTime/>
 			<SplitsList/>
 		</main>
