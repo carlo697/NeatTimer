@@ -1,6 +1,8 @@
 import React from "react";
 import {useInterval, useLocalStorage, getTimeSpanStrings} from "../util.js";
 import {useGlobalContext} from "../context";
+import {ImPause2, ImPlay3} from "react-icons/im";
+import {VscDebugRestart} from "react-icons/vsc";
 
 const StopwatchTime = () => {
 	const {addSplit, clearSplits} = useGlobalContext();
@@ -53,17 +55,17 @@ const StopwatchTime = () => {
 								<button onClick={() => addSplit(time)} className="btn btn-purple">
 									Split
 								</button>
-								<button onClick={stop} className="btn btn-red">
-									Stop
+								<button onClick={stop} className="btn small btn-red">
+									<ImPause2 className="icon"/>
 								</button>
 							</React.Fragment>
 						:
 							<React.Fragment>
-								<button onClick={restart} className="btn btn-red" disabled={time === 0}>
-									Restart
+								<button onClick={restart} className="btn simple btn-red" disabled={time === 0}>
+									<VscDebugRestart className="icon"/>
 								</button>
-								<button onClick={start} className="btn btn-green">
-									Start
+								<button onClick={start} className="btn small btn-green">
+									<ImPlay3 className="icon"/>
 								</button>
 							</React.Fragment>
 				}

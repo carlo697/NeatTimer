@@ -2,6 +2,8 @@ import React, {useState, useEffect} from "react";
 import {getTimeSpanStrings} from "../util.js";
 import {useGlobalContext} from "../context";
 import {TiEdit} from "react-icons/ti";
+import {ImPause2, ImPlay3} from "react-icons/im";
+import {VscDebugRestart} from "react-icons/vsc";
 import CountdownSettings from "./CountdownSettings";
 
 const CountdownTime = () => {
@@ -69,18 +71,18 @@ const CountdownTime = () => {
 					<TiEdit className="icon"/> Edit
 				</button>
 
-				<button className="btn btn-orange" onClick={restart} disabled={countdownTime === countdownInitialTime}>
-					Restart
+				<button className="btn small btn-orange" onClick={restart} disabled={countdownTime === countdownInitialTime}>
+					<VscDebugRestart className="icon"/>
 				</button>
 
 				{
 					countdownOn ?
-						<button className="btn btn-red" onClick={stop}>
-							Stop
+						<button className="btn small btn-red" onClick={stop}>
+							<ImPause2 className="icon"/>
 						</button>
 						:
-						<button className="btn btn-green" onClick={start}>
-							Start
+						<button className="btn small btn-green" onClick={start}>
+							<ImPlay3 className="icon"/>
 						</button>
 				}
 			</div>
