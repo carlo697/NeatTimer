@@ -12,7 +12,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - HTML
 - CSS
 - Javascript ES6
-- React
-- React Icons
-- React Router
+- React, React Hooks, React Icons and React Router
+- Browser Notifications
+- [World Time API](http://worldtimeapi.org/)
 - Heroku
