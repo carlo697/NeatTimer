@@ -26,8 +26,15 @@ body {
 	background: #f1f5f8;
 }
 
+.page-container {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
 main {
 	margin: 2em 2em 4em 2em;
+	flex-grow: 1;
 }
 
 main h1 {

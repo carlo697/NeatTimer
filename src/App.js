@@ -10,19 +10,21 @@ import Footer from "./components/Footer";
 const App = () => {
 	return (
 		<React.Fragment>
-			<Navbar/>
-			<Switch>
-				<Route exact path="/">
-					<Stopwatch/>
-				</Route>
-				<Route path="/countdown">
-					<Countdown/>
-				</Route>
-				<Route path="/clock">
-					<Clock/>
-				</Route>
-			</Switch>
-			<Footer/>
+			<div className="page-container">
+				<Navbar/>
+				<Switch>
+					<Route exact path="/">
+						<Stopwatch/>
+					</Route>
+					<Route path="/countdown">
+						<Countdown/>
+					</Route>
+					<Route path="/clock">
+						<Clock/>
+					</Route>
+				</Switch>
+				<Footer/>
+			</div>
 			<Modal/>
 		</React.Fragment>
 	);
