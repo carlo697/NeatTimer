@@ -18,7 +18,7 @@ const Clock = () => {
 
 	const [responseTime, setResponseTime] = useState(new Date());
 	const [apiTime, setApiTime] = useState(new Date());
-	const [time, setTime] = useState(new Date(0));
+	const [time, setTime] = useState(new Date());
 
 	useEffect(() => {
 		const fetchData = async () => {
