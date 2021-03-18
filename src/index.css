@@ -441,3 +441,28 @@ input[type=checkbox] {
 	padding: 2em 1em;
 	font-size: 0.9em;
 }
+
+.footer-links {
+	font-weight: lighter;
+	margin-bottom: 1em;
+}
+
+.footer-links a {
+	color: #C7C7C7;
+	display: flex;
+	align-items: center;
+	transition: color 0.3s;
+}
+
+.footer-links a .icon {
+	margin-right: 0.5em;
+	transition: all 0.5s;
+}
+
+.footer-links a:hover {
+	color: #E0E0E0;
+}
+
+.footer-links a:hover .icon {
+	transform: translateX(0.4em);
+}
