@@ -5,6 +5,7 @@ import Modal from "./components/Modal";
 import Stopwatch from "./pages/Stopwatch";
 import Countdown from "./pages/Countdown";
 import Clock from "./pages/Clock";
+import Footer from "./components/Footer";
 
 const App = () => {
 	return (
@@ -21,6 +22,7 @@ const App = () => {
 					<Clock/>
 				</Route>
 			</Switch>
+			<Footer/>
 			<Modal/>
 		</React.Fragment>
 	);
