@@ -7,10 +7,10 @@ const CountdownSettings = () => {
 		countdownSettings,
 		setCountdownSettings,
 		closeModal,
-		modalExtra
+		modal: {
+			onSave
+		}
 	} = useGlobalContext();
-
-	const {onSave} = modalExtra;
 
 	const [settings, setSettings] = useState({...countdownSettings});
 

@@ -45,9 +45,7 @@ const CountdownTime = () => {
 		openModal({
 			title: "Edit Countdown Timer",
 			content: <CountdownSettings/>,
-			extra: {
-				onSave: () => setAreSettingsChange(true)
-			}
+			onSave: () => setAreSettingsChange(true),
 		});
 	}
 

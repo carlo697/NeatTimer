@@ -3,9 +3,16 @@ import {AiFillCloseCircle} from "react-icons/ai";
 import {useGlobalContext} from "../context";
 
 const Modal = () => {
-	const {isOpenModal, modalTitle, modalContent, closeModal} = useGlobalContext();
+	const {
+		closeModal,
+		modal: {
+			isOpen,
+			title,
+			content,
+		}
+	} = useGlobalContext();
 
-	if (!isOpenModal) {
+	if (!isOpen) {
 		return null;
 	}
 
@@ -13,14 +20,14 @@ const Modal = () => {
 		<div className="modal-background">
 			<div className="modal">
 				<div className="modal-title">
-					<h3>{modalTitle}</h3>
+					<h3>{title}</h3>
 					<button onClick={closeModal}>
 						<AiFillCloseCircle/>
 					</button>
 				</div>
 
 				<div className="modal-content">
-					{modalContent}
+					{content}
 				</div>
 			</div>
 		</div>

@@ -7,10 +7,11 @@ const AppContext = React.createContext();
 export const AppProvider = ({children}) => {
 	const [splits, setSplits] = useLocalStorage("splits", []);
 
-	const [isOpenModal, setIsOpenModal] = useState(false);
-	const [modalTitle, setModalTitle] = useState("");
-	const [modalContent, setModalContent] = useState(null);
-	const [modalExtra, setModalExtra] = useState(null);
+	const [modal, setModal] = useState({
+		isOpen: false,
+		title: "",
+		content: null,
+	});
 
 	// countdown
 	const [countdownSettings, setCountdownSettings] = useLocalStorage(
@@ -72,17 +73,19 @@ export const AppProvider = ({children}) => {
 		setSplits([]);
 	};
 
-	const openModal = ({title, content, extra}) => {
-		setIsOpenModal(true);
-		setModalTitle(title);
-		setModalContent(content);
-		setModalExtra(extra);
+	const openModal = (content) => {
+		setModal({
+			...content,
+			isOpen: true,
+		});
 	}
 
 	const closeModal = () => {
-		setIsOpenModal(false);
-		setModalTitle("");
-		setModalContent(null);
+		setModal({
+			isOpen: false,
+			title: "",
+			content: null,
+		});
 	}
 
 	const openCountdownAlarm = () => {
@@ -109,12 +112,9 @@ export const AppProvider = ({children}) => {
 				splits,
 				addSplit,
 				clearSplits,
-				isOpenModal,
-				modalTitle,
-				modalContent,
 				openModal,
 				closeModal,
-				modalExtra,
+				modal,
 				// countdown
 				countdownSettings,
 				setCountdownSettings,
