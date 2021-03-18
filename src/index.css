@@ -338,7 +338,9 @@ a {
 /* Settings */
 .input-row {
 	display: flex;
-	justify-content: space-around;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 1em;
 }
 
 .input-container {
@@ -357,6 +359,12 @@ a {
 	border-radius: 0;
 	outline: none;
 	border: solid 2px rgb(239, 239, 239);
+}
+
+input[type=checkbox] {
+	width: 1.5em;
+	height: 1.5em;
+	margin-left: 1em;
 }
 
 .time-input-container {

@@ -32,6 +32,11 @@ export const AppProvider = ({children}) => {
 	// notifications
 	const [notificationPermission, setNotificationPermission] = useState(Notification.permission);
 
+	// clock
+	const [clockSettings, setClockSettings] = useLocalStorage("clockSettings", {
+		useAPI: true,
+	});
+
 	// check alarms
 	useInterval(() => {
 		if (countdownOn) {
@@ -122,7 +127,10 @@ export const AppProvider = ({children}) => {
 				//notifications
 				notificationPermission,
 				setNotificationPermission,
-				showNotification
+				showNotification,
+				//clock
+				clockSettings,
+				setClockSettings,
 				}}
 		>
 			{children}

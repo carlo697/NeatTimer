@@ -5,6 +5,10 @@ import ClockSettings from "../components/ClockSettings";
 import {TiEdit} from "react-icons/ti";
 
 const Clock = () => {
+	useEffect(() => {
+		document.title = "Neat Timer - Clock";
+	}, []);
+
 	const {
 		openModal
 	} = useGlobalContext();
@@ -14,8 +18,22 @@ const Clock = () => {
 	const [time, setTime] = useState(new Date());
 
 	useEffect(() => {
-		document.title = "Neat Timer - Clock";
-	}, []);
+		if (areSettingsChanged) {
+			console.log("Reload");
+
+			setAreSettingsChange(false);
+		}
+	}, [areSettingsChanged]);
+
+	const edit = () => {
+		openModal({
+			title: "Clock Settings",
+			content: <ClockSettings/>,
+			extra: {
+				onSave: () => setAreSettingsChange(true)
+			}
+		});
+	}
 
 	useInterval(() => {
 		setTime(new Date());
@@ -27,13 +45,6 @@ const Clock = () => {
 
 	const formattedTime = Intl.DateTimeFormat("default", { hour: "numeric", minute: "numeric", second:"numeric", hour12: false }).format(time);
 	const formattedDate = capitalize(Intl.DateTimeFormat("default", { dateStyle: "full"}).format(time));
-
-	const edit = () => {
-		openModal({
-			title: "Clock Settings",
-			content: <ClockSettings/>,
-		});
-	}
 
 	return (
 		<main>
