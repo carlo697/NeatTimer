@@ -20,8 +20,10 @@ const ClockSettings = () => {
 	}
 
 	const handleChange = e => {
-		const name = e.target.name;
-		let value = e.target.value;
+		const {target} = e;
+
+		const name = target.name;
+		const value = target.type === 'checkbox' ? target.checked : target.value;
 
 		setSettings({
 			...settings,
@@ -37,7 +39,7 @@ const ClockSettings = () => {
 							type="checkbox"
 							id="useAPI"
 							name="useAPI"
-							value={settings.useAPI}
+							checked={settings.useAPI}
 							onChange={handleChange}
 						/>
 			</div>
