@@ -4,39 +4,46 @@ import {useGlobalContext} from "../context";
 import ClockSettings from "../components/ClockSettings";
 import {TiEdit} from "react-icons/ti";
 
+const timeAPI = "http://worldtimeapi.org/api/ip";
+
 const Clock = () => {
 	useEffect(() => {
 		document.title = "Neat Timer - Clock";
 	}, []);
 
 	const {
-		openModal
+		openModal,
+		clockSettings: {useAPI}
 	} = useGlobalContext();
 
-	const [areSettingsChanged, setAreSettingsChange] = useState(false);
-
-	const [time, setTime] = useState(new Date());
+	const [responseTime, setResponseTime] = useState(new Date());
+	const [apiTime, setApiTime] = useState(new Date());
+	const [time, setTime] = useState(new Date(0));
 
 	useEffect(() => {
-		if (areSettingsChanged) {
-			console.log("Reload");
+		const fetchData = async () => {
+			const response = await fetch(timeAPI);
+			const {unixtime} = await response.json();
 
-			setAreSettingsChange(false);
+			setApiTime(unixtime * 1000);
+			setResponseTime(Date.now());
 		}
-	}, [areSettingsChanged]);
 
-	const edit = () => {
-		openModal({
-			title: "Clock Settings",
-			content: <ClockSettings/>,
-			extra: {
-				onSave: () => setAreSettingsChange(true)
-			}
-		});
-	}
+		if (useAPI) {
+			fetchData(); 
+		}
+
+	}, [useAPI]);
 
 	useInterval(() => {
-		setTime(new Date());
+		if (useAPI) {
+			const newTime = new Date(apiTime + (Date.now() - responseTime));
+
+			setTime(newTime);
+		} else {
+			setTime(new Date());
+		}
+		
 	}, 100);
 
 	const capitalize = (text) => {
@@ -45,6 +52,13 @@ const Clock = () => {
 
 	const formattedTime = Intl.DateTimeFormat("default", { hour: "numeric", minute: "numeric", second:"numeric", hour12: false }).format(time);
 	const formattedDate = capitalize(Intl.DateTimeFormat("default", { dateStyle: "full"}).format(time));
+
+	const edit = () => {
+		openModal({
+			title: "Clock Settings",
+			content: <ClockSettings/>,
+		});
+	}
 
 	return (
 		<main>

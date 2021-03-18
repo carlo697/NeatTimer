@@ -6,7 +6,6 @@ const ClockSettings = () => {
 		clockSettings,
 		setClockSettings,
 		closeModal,
-		modalExtra: {onSave},
 	} = useGlobalContext();
 
 	const [settings, setSettings] = useState({...clockSettings});
@@ -16,7 +15,6 @@ const ClockSettings = () => {
 
 		setClockSettings({...settings});
 		closeModal();
-		onSave();
 	}
 
 	const handleChange = e => {
