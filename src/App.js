@@ -5,6 +5,7 @@ import Modal from "./components/Modal";
 import Stopwatch from "./pages/Stopwatch";
 import Countdown from "./pages/Countdown";
 import Clock from "./pages/Clock";
+import Alarm from "./pages/Alarm";
 import Footer from "./components/Footer";
 
 const App = () => {
@@ -18,6 +19,9 @@ const App = () => {
 					</Route>
 					<Route path="/countdown">
 						<Countdown/>
+					</Route>
+					<Route path="/alarm">
+						<Alarm/>
 					</Route>
 					<Route path="/clock">
 						<Clock/>

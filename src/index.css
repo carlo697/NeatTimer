@@ -259,7 +259,7 @@ nav {
 	display: none;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 700px) {
 	.nav-text {
 		display: initial;
 	}
@@ -286,19 +286,19 @@ a {
 	color: var(--red);
 }
 
-@media (min-width: 340px) {
+@media (min-width: 390px) {
 	.nav-logo {
 		display: inline-block;
 	}
 }
 
-@media (min-width: 400px) {
+@media (min-width: 450px) {
 	.nav-logo {
 		font-size: 1.3em;
 	}
 }
 
-@media (min-width: 600px) {
+@media (min-width: 700px) {
 	.nav-logo {
 		font-size: 1.5em;
 		padding-right: 1.5em;
