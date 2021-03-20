@@ -85,7 +85,7 @@ const Clock = () => {
 				<div className="timer">
 					{formattedTime}
 				</div>
-				<div>
+				<div className="date">
 					{formattedDate}
 				</div>
 				{

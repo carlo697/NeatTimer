@@ -562,3 +562,7 @@ input[type=checkbox] {
 	border-radius: 0.2rem;
 	max-width: 500px;
 }
+
+.date {
+	margin-bottom: 2rem;
+}
