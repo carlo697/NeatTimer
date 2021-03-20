@@ -11,6 +11,8 @@
 	--blue: #358BF5;
 	--red: #ed1c24;
 	--nav-background: #1f2533;
+	--error-background: rgb(255, 251, 229);
+	--error: rgb(255, 0, 0);
 }
 
 @font-face {
@@ -547,4 +549,16 @@ input[type=checkbox] {
 .alarm button:hover {
 	filter: brightness(0.95);
 	transform: scale(1.1);
+}
+
+/* Clock */
+.error {
+	background-color: var(--error-background);
+	color: var(--error);
+	padding: 1rem 0.5rem;
+	margin: 0 auto;
+	margin-bottom: 1rem;
+	border: 1px solid var(--error);
+	border-radius: 0.2rem;
+	max-width: 500px;
 }

@@ -19,14 +19,32 @@ const Clock = () => {
 	const [responseTime, setResponseTime] = useState(new Date());
 	const [apiTime, setApiTime] = useState(new Date());
 	const [time, setTime] = useState(new Date());
+	const [error, setError] = useState(false);
+
+	useEffect(() => {
+		if (!useAPI) {
+			setError(false);
+		}
+
+	}, [useAPI]);
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const response = await fetch(timeAPI);
-			const {unixtime} = await response.json();
+			try {
+				const response = await fetch(timeAPI);
+				const {unixtime} = await response.json();
 
-			setApiTime(unixtime * 1000);
-			setResponseTime(Date.now());
+				setApiTime(unixtime * 1000);
+				setResponseTime(Date.now());
+				setError(false);
+			} catch(e) {
+				console.log("Error fetching data!")
+				console.log(e);
+
+				setApiTime(Date.now());
+				setResponseTime(Date.now());
+				setError(true);
+			}
 		}
 
 		if (useAPI) {
@@ -70,6 +88,13 @@ const Clock = () => {
 				<div>
 					{formattedDate}
 				</div>
+				{
+					error && (
+						<div className="error">
+							<strong>Error:</strong> The data can't be fetched from the API.
+						</div>
+					)
+				}
 				<div className="btn-container">
 					<button className="btn btn-blue" onClick={edit}>
 						<TiEdit className="icon"/> Edit
