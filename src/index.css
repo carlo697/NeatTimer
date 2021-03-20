@@ -480,3 +480,71 @@ input[type=checkbox] {
 .footer-links a:hover .icon {
 	transform: translateX(0.4em);
 }
+
+/* Alarms */
+.alarm {
+	margin: 3rem auto;
+	max-width: 500px;
+	transition: all 0.5s;
+	position: relative;
+}
+
+.alarm::after {
+	content: "";
+	background-color: rgba(0, 0, 0, 0.1);
+	position: absolute;
+	width: 0;
+	bottom: -1rem;
+	left: 0;
+	height: 2px;
+	transition: width 0.4s;
+}
+
+.alarm:hover::after {
+	width: 100%;
+}
+
+.alarm h2 {
+	text-align: left;
+	margin-left: 1rem;
+	margin-bottom: 1rem;
+	font-size: 1.2rem;
+	font-weight: 400;
+}
+
+.alarm-body {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 1rem;
+}
+
+.time {
+	font-family: "DSEG7";
+	font-size: 1.3em;
+}
+
+@media (min-width: 400px) {
+	.time {
+		font-size: 2em;
+	}
+
+	.alarm h2 {
+		margin-left: 2rem;
+	}
+}
+
+.alarm button {
+	display: inline-block;
+	font-size: 1.8em;
+	color: var(--red);
+	background-color: transparent;
+	width: 1em;
+	height: 1em;
+	transition: all 0.3s;
+}
+
+.alarm button:hover {
+	filter: brightness(0.95);
+	transform: scale(1.1);
+}

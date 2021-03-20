@@ -38,6 +38,9 @@ export const AppProvider = ({children}) => {
 		useAPI: true,
 	});
 
+	// alarms
+	const [alarms, setAlarms] = useLocalStorage("alarms", []);
+
 	// check alarms
 	useInterval(() => {
 		if (countdownOn) {
@@ -106,6 +109,25 @@ export const AppProvider = ({children}) => {
 		return null;
 	};
 
+	const saveAlarm = (alarm) => {
+		const existing = alarms.find(item => item.id === alarm.id);
+
+		if (existing) {
+
+		} else {
+			setAlarms([
+				...alarms,
+				alarm
+			]);
+		}
+	};
+
+	const removeAlarm = (id) => {
+		setAlarms(
+			alarms.filter(item => item.id !== id)
+		);
+	}
+
 	return (
 		<AppContext.Provider
 			value={{
@@ -131,6 +153,10 @@ export const AppProvider = ({children}) => {
 				//clock
 				clockSettings,
 				setClockSettings,
+				//alarm
+				alarms,
+				saveAlarm,
+				removeAlarm,
 				}}
 		>
 			{children}
