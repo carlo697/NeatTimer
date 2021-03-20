@@ -1,6 +1,7 @@
 import React, {useContext, useState} from "react";
 import {useLocalStorage, useInterval} from "./util.js";
 import CountdownAlarm from "./components/CountdownAlarm";
+import AlarmModal from "./components/AlarmModal";
 
 const AppContext = React.createContext();
 
@@ -43,6 +44,7 @@ export const AppProvider = ({children}) => {
 
 	// check alarms
 	useInterval(() => {
+		// check countdown
 		if (countdownOn) {
 			const elapsedMiliseconds = Date.now() - countdownStartTime;
 			const newTime = new Date(elapsedMiliseconds);
@@ -58,6 +60,35 @@ export const AppProvider = ({children}) => {
 
 			setCountdownTime(countdownInitialTime - newTime.getTime());
 		}
+
+		// check alarms
+		alarms.forEach(alarm => {
+			const {title, hour, minute, lastDate} = alarm;
+
+			// get date at midnight
+			const midnight = new Date().setHours(0,0,0,0);
+
+			const elapsedSinceMidnight = new Date() - midnight;
+			const msToAlarm = hour * 3600000 + minute * 60000;
+
+			// check if alarm should be played to the user
+			if (elapsedSinceMidnight > msToAlarm) {
+				
+				const lastTimePlayed = new Date(lastDate);
+
+				// has this alarm been played today?
+				if (lastTimePlayed < midnight) {
+					openModal({
+						title: title,
+						content: <AlarmModal/>,
+						alarm: alarm,
+					});
+
+					alarm.lastDate = midnight;
+					setAlarms([...alarms]);
+				}
+			}
+		});
 	}, 50);
 
 	const addSplit = split => {

@@ -58,7 +58,23 @@ const AlarmSettings = ({alarm}) => {
 	const handleSubmit = e => {
 		e.preventDefault();
 
-		saveAlarm(settings);
+		// get date at midnight
+		const midnight = new Date().setHours(0,0,0,0);
+
+		// ms since midnight
+		const elapsedSinceMidnight = new Date() - midnight;
+		// ms to play the alarm since midnight
+		const msToAlarm = hour * 3600000 + minute * 60000;
+
+		const lastDate = elapsedSinceMidnight > msToAlarm ?
+			midnight : midnight - 86400000;
+
+		const newSettings = {
+			...settings,
+			lastDate: lastDate,
+		}
+
+		saveAlarm(newSettings);
 		closeModal();
 	}
 
