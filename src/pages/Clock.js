@@ -4,7 +4,7 @@ import {useGlobalContext} from "../context";
 import ClockSettings from "../components/ClockSettings";
 import {TiEdit} from "react-icons/ti";
 
-const timeAPI = "http://worldtimeapi.org/api/ip";
+const timeAPI = "https://worldtimeapi.org/api/ip";
 
 const Clock = () => {
 	useEffect(() => {

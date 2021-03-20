@@ -36,7 +36,7 @@ export const AppProvider = ({children}) => {
 
 	// clock
 	const [clockSettings, setClockSettings] = useLocalStorage("clockSettings", {
-		useAPI: true,
+		useAPI: false,
 	});
 
 	// alarms
