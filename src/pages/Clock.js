@@ -3,6 +3,7 @@ import {useInterval} from "../util.js";
 import {useGlobalContext} from "../context";
 import ClockSettings from "../components/ClockSettings";
 import {TiEdit} from "react-icons/ti";
+import Loading from "../components/Loading";
 
 const timeAPI = "https://worldtimeapi.org/api/ip";
 
@@ -20,6 +21,7 @@ const Clock = () => {
 	const [apiTime, setApiTime] = useState(new Date());
 	const [time, setTime] = useState(new Date());
 	const [error, setError] = useState(false);
+	const [isLoading, setIsLoading] = useState(useAPI);
 
 	useEffect(() => {
 		if (!useAPI) {
@@ -30,6 +32,8 @@ const Clock = () => {
 
 	useEffect(() => {
 		const fetchData = async () => {
+			setIsLoading(true);
+
 			try {
 				const response = await fetch(timeAPI);
 				const {unixtime} = await response.json();
@@ -45,6 +49,8 @@ const Clock = () => {
 				setResponseTime(Date.now());
 				setError(true);
 			}
+
+			setIsLoading(false);
 		}
 
 		if (useAPI) {
@@ -78,8 +84,19 @@ const Clock = () => {
 		});
 	}
 
+	if (isLoading) {
+		return (
+			<main className="clock-page">
+				<h1>Clock</h1>
+				<section>
+					<Loading/>
+				</section>
+			</main>
+		);
+	}
+
 	return (
-		<main>
+		<main className="clock-page">
 			<h1>Clock</h1>
 			<section>
 				<div className="timer">
