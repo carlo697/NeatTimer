@@ -1,4 +1,4 @@
-import React, {useContext, useState} from "react";
+import React, {useContext, useState, useCallback} from "react";
 import {useLocalStorage, useInterval} from "./util.js";
 import CountdownAlarm from "./components/CountdownAlarm";
 import AlarmModal from "./components/AlarmModal";
@@ -129,7 +129,7 @@ export const AppProvider = ({children}) => {
 		});
 	};
 
-	const showNotification = (title, text, icon) => {
+	const showNotification = useCallback((title, text, icon) => {
 		if (notificationPermission === "granted") {
 			return new Notification(title, {
 				body: text,
@@ -138,7 +138,7 @@ export const AppProvider = ({children}) => {
 		}
 
 		return null;
-	};
+	}, [notificationPermission]);
 
 	const saveAlarm = (alarm) => {
 		const existing = alarms.find(item => item.id === alarm.id);
