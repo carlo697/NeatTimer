@@ -1,17 +1,14 @@
-import React, {useEffect} from "react";
+import React from "react";
 import AlarmSettings from "../components/AlarmSettings";
 import SingleAlarm from "../components/SingleAlarm";
 import {useGlobalContext} from "../context";
+import {Helmet} from "react-helmet";
 
 const Alarm = () => {
 	const {
 		openModal,
 		alarms
 	} = useGlobalContext();
-
-	useEffect(() => {
-		document.title = "Neat Timer - Alarm";
-	}, []);
 
 	const clickAdd = () => {
 		const newAlarm = {
@@ -27,8 +24,12 @@ const Alarm = () => {
 		});
 	}
 
-	return (
+	return (	
 		<main>
+			<Helmet>
+				<title>Neat Timer - Alarm</title>
+			</Helmet>
+
 			<h1>Alarm</h1>
 			<section>
 				<div>

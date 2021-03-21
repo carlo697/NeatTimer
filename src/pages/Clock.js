@@ -4,14 +4,11 @@ import {useGlobalContext} from "../context";
 import ClockSettings from "../components/ClockSettings";
 import {TiEdit} from "react-icons/ti";
 import Loading from "../components/Loading";
+import {Helmet} from "react-helmet";
 
 const timeAPI = "https://worldtimeapi.org/api/ip";
 
 const Clock = () => {
-	useEffect(() => {
-		document.title = "Neat Timer - Clock";
-	}, []);
-
 	const {
 		openModal,
 		clockSettings: {useAPI}
@@ -87,6 +84,10 @@ const Clock = () => {
 	if (isLoading) {
 		return (
 			<main className="clock-page">
+				<Helmet>
+					<title>Neat Timer - Clock</title>
+				</Helmet>
+				
 				<h1>Clock</h1>
 				<section>
 					<Loading/>
@@ -97,6 +98,10 @@ const Clock = () => {
 
 	return (
 		<main className="clock-page">
+			<Helmet>
+				<title>Neat Timer - Clock</title>
+			</Helmet>
+
 			<h1>Clock</h1>
 			<section>
 				<div className="timer">

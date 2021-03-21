@@ -1,14 +1,14 @@
-import React, {useEffect} from "react";
+import React from "react";
 import CountdownTime from "../components/CountdownTime";
 import NotificationRequester from "../components/NotificationRequester";
+import {Helmet} from "react-helmet";
 
 const Countdown = () => {
-	useEffect(() => {
-		document.title = "Neat Timer - Countdown";
-	}, []);
-
 	return (
 		<main>
+			<Helmet>
+				<title>Neat Timer - Countdown</title>
+			</Helmet>
 			<h1>Countdown Timer</h1>
 			<CountdownTime/>
 			<NotificationRequester/>
