@@ -17,6 +17,7 @@ export const AppProvider = ({children}) => {
 	// countdown
 	const [countdownSettings, setCountdownSettings] = useLocalStorage(
 		"countdownSettings", {
+			title: "",
 			hours: 0,
 			minutes: 1,
 			seconds: 0
@@ -123,8 +124,9 @@ export const AppProvider = ({children}) => {
 	}
 
 	const openCountdownAlarm = () => {
+		console.log(countdownSettings.title)
 		openModal({
-			title: "Countdown",
+			title: countdownSettings.title || "Countdown",
 			content: <CountdownAlarm/>
 		});
 	};

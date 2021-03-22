@@ -14,7 +14,10 @@ const CountdownTime = () => {
 		setCountdownOn,
 		setCountdownStartTime,
 		countdownOn,
-		countdownInitialTime
+		countdownInitialTime,
+		countdownSettings: {
+			title
+		}
 	} = useGlobalContext();
 	
 	const [areSettingsChanged, setAreSettingsChange] = useState(false);
@@ -53,6 +56,8 @@ const CountdownTime = () => {
 
 	return (
 		<section>
+			<h2>{title}</h2>
+
 			<div className="timer">
 				{
 					`${hours}:${minutes}:${seconds}`

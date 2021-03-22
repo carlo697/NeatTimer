@@ -13,7 +13,10 @@ const CountdownAlarm = () => {
 		setCountdownTime,
 		setCountdownOn,
 		setCountdownStartTime,
-		showNotification
+		showNotification,
+		countdownSettings: {
+			title
+		}
 	} = useGlobalContext();
 
 	const {hours, minutes, seconds} = getTimeSpanStrings(countdownInitialTime);
@@ -31,7 +34,7 @@ const CountdownAlarm = () => {
 		audio.play();
 
 		const notification = showNotification(
-			"Your timer reached zero!",
+			`${title}!` || "Your timer reached zero!",
 			`${hours}:${minutes}:${seconds}`,
 			NotificationIcon,
 		);
@@ -48,7 +51,7 @@ const CountdownAlarm = () => {
 	return (
 		<React.Fragment>
 			<Helmet>
-				<title>Your timer reached zero!!!</title>
+				<title>{title || "Your timer reached zero"}!!!</title>
 			</Helmet>
 			<div className="modal-center">
 				<GiStopwatch className="modal-alarm-icon"/>

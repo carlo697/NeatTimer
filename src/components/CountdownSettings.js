@@ -32,7 +32,7 @@ const CountdownSettings = () => {
 		return result;
 	}
 
-	const {hours, seconds, minutes} = settings;
+	const {title, hours, seconds, minutes} = settings;
 
 	const handleChange = e => {
 		const name = e.target.name;
@@ -73,6 +73,20 @@ const CountdownSettings = () => {
 
 	return (
 		<form>
+			<div className="input-row">
+				<div className="input-container">
+					<label htmlFor="title">Title</label>
+					<div className="time-input-container">
+						<input
+							type="text"
+							id="title"
+							name="title"
+							value={title}
+							onChange={handleChange}
+						/>
+					</div>
+				</div>
+			</div>
 			<div className="input-row">
 				<div className="input-container">
 					<label htmlFor="hours">Hours</label>
