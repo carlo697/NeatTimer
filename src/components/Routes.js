@@ -1,26 +1,22 @@
 import React from 'react';
 import { Route, Switch } from 'react-router';
-import Stopwatch from "../pages/Stopwatch";
-import Countdown from "../pages/Countdown";
-import Clock from "../pages/Clock";
-import Alarm from "../pages/Alarm";
+import Loading from "./Loading";
+
+const Stopwatch = React.lazy(() => import("../pages/Stopwatch"));
+const Countdown = React.lazy(() => import("../pages/Countdown"));
+const Clock = React.lazy(() => import("../pages/Clock"));
+const Alarm = React.lazy(() => import("../pages/Alarm"));
  
 const Routes = () => {
 	return (
-		<Switch>
-			<Route exact path="/">
-				<Stopwatch/>
-			</Route>
-			<Route path="/countdown">
-				<Countdown/>
-			</Route>
-			<Route path="/alarm">
-				<Alarm/>
-			</Route>
-			<Route path="/clock">
-				<Clock/>
-			</Route>
-		</Switch>
+		<React.Suspense fallback={<Loading/>}>
+			<Switch>
+				<Route exact path="/" component={Stopwatch}/>
+				<Route path="/countdown" component={Countdown}/>
+				<Route path="/alarm" component={Alarm}/>
+				<Route path="/clock" component={Clock}/>
+			</Switch>
+		</React.Suspense>
 	);
 };
 
