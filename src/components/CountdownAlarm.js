@@ -2,9 +2,9 @@ import React, {useEffect} from "react";
 import {getTimeSpanStrings} from "../util.js";
 import {useGlobalContext} from "../context";
 import { GiStopwatch } from "react-icons/gi";
-
 import Clock from "../sounds/clock.mp3";
 import NotificationIcon from "../img/notification-icon.png";
+import {Helmet} from "react-helmet";
 
 const CountdownAlarm = () => {
 	const {
@@ -47,6 +47,9 @@ const CountdownAlarm = () => {
 
 	return (
 		<React.Fragment>
+			<Helmet>
+				<title>Your timer reached zero!!!</title>
+			</Helmet>
 			<div className="modal-center">
 				<GiStopwatch className="modal-alarm-icon"/>
 
@@ -55,7 +58,6 @@ const CountdownAlarm = () => {
 						`${hours}:${minutes}:${seconds}`
 					}
 				</div>
-
 			</div>
 			<footer>
 				<button type="submit" className="btn btn-green" onClick={restart}>
