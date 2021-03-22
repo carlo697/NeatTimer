@@ -1,6 +1,7 @@
 import React from "react";
 import {AiFillCloseCircle} from "react-icons/ai";
 import {useGlobalContext} from "../context";
+import {Helmet} from "react-helmet";
 
 const Modal = () => {
 	const {
@@ -18,6 +19,9 @@ const Modal = () => {
 
 	return (
 		<div className="modal-background">
+			<Helmet>
+				<body className="modal-open"/>
+			</Helmet>
 			<div className="modal">
 				<div className="modal-title">
 					<h3>{title}</h3>
