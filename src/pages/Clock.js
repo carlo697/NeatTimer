@@ -28,32 +28,41 @@ const Clock = () => {
 	}, [useAPI]);
 
 	useEffect(() => {
+		const abortController = new AbortController();
+
 		const fetchData = async () => {
 			setIsLoading(true);
 
 			try {
-				const response = await fetch(timeAPI);
+				const response = await fetch(timeAPI, {signal: abortController.signal});
 				const {unixtime} = await response.json();
 
 				setApiTime(unixtime * 1000);
 				setResponseTime(Date.now());
 				setError(false);
+				setIsLoading(false);
 			} catch(e) {
-				console.log("Error fetching data!")
-				console.log(e);
+				if (abortController.signal.aborted) {
+					console.log("Cancelled data fetching");
+				} else {
+					console.log(e);
+					console.log("Error fetching data!")
 
-				setApiTime(Date.now());
-				setResponseTime(Date.now());
-				setError(true);
+					setApiTime(Date.now());
+					setResponseTime(Date.now());
+					setError(true);
+					setIsLoading(false);
+				}
 			}
-
-			setIsLoading(false);
 		}
 
 		if (useAPI) {
 			fetchData(); 
 		}
 
+		return () => {
+			abortController.abort();
+		};
 	}, [useAPI]);
 
 	useInterval(() => {
