@@ -1,7 +1,7 @@
 import React from "react";
 import {AiFillCloseCircle} from "react-icons/ai";
 import {useGlobalContext} from "../context";
-import {Helmet} from "react-helmet";
+import {Helmet} from "react-helmet-async";
 
 const Modal = () => {
 	const {

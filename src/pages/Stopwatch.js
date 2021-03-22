@@ -1,7 +1,7 @@
 import React from "react";
 import StopwatchTime from "../components/StopwatchTime";
 import SplitsList from "../components/SplitsList";
-import {Helmet} from "react-helmet";
+import {Helmet} from "react-helmet-async";
 
 const Stopwatch = () => {
 	return (

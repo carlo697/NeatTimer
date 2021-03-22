@@ -4,7 +4,7 @@ import {useGlobalContext} from "../context";
 import ClockSettings from "../components/ClockSettings";
 import {TiEdit} from "react-icons/ti";
 import Loading from "../components/Loading";
-import {Helmet} from "react-helmet";
+import {Helmet} from "react-helmet-async";
 
 const timeAPI = "https://worldtimeapi.org/api/ip";
 

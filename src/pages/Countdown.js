@@ -1,7 +1,7 @@
 import React from "react";
 import CountdownTime from "../components/CountdownTime";
 import NotificationRequester from "../components/NotificationRequester";
-import {Helmet} from "react-helmet";
+import {Helmet} from "react-helmet-async";
 
 const Countdown = () => {
 	return (

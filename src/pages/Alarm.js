@@ -2,7 +2,7 @@ import React from "react";
 import AlarmSettings from "../components/AlarmSettings";
 import SingleAlarm from "../components/SingleAlarm";
 import {useGlobalContext} from "../context";
-import {Helmet} from "react-helmet";
+import {Helmet} from "react-helmet-async";
 
 const Alarm = () => {
 	const {

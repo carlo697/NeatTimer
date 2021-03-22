@@ -4,7 +4,7 @@ import {useGlobalContext} from "../context";
 import {GiAlarmClock} from "react-icons/gi";
 import Clock from "../sounds/clock.mp3";
 import NotificationIcon from "../img/notification-icon.png";
-import {Helmet} from "react-helmet";
+import {Helmet} from "react-helmet-async";
 
 const AlarmModal = () => {
 	const {
