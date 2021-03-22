@@ -2,9 +2,9 @@ import React, {useEffect} from "react";
 import {getTimeSpanStrings} from "../util.js";
 import {useGlobalContext} from "../context";
 import {GiAlarmClock} from "react-icons/gi";
-
 import Clock from "../sounds/clock.mp3";
 import NotificationIcon from "../img/notification-icon.png";
+import {Helmet} from "react-helmet";
 
 const AlarmModal = () => {
 	const {
@@ -45,6 +45,9 @@ const AlarmModal = () => {
 
 	return (
 		<React.Fragment>
+			<Helmet>
+				<title>{title}!!!</title>
+			</Helmet>
 			<div className="modal-center">
 				<GiAlarmClock className="modal-alarm-icon"/>
 				<div className="timer">
