@@ -2,9 +2,9 @@ import React, {useEffect} from "react";
 import {getTimeSpanStrings} from "../util.js";
 import {useGlobalContext} from "../context";
 import { GiStopwatch } from "react-icons/gi";
-import Clock from "../sounds/clock.mp3";
 import NotificationIcon from "../img/notification-icon.png";
 import {Helmet} from "react-helmet-async";
+import {createAudioAndPlay} from "../data/alarmSounds";
 
 const CountdownAlarm = () => {
 	const {
@@ -16,7 +16,8 @@ const CountdownAlarm = () => {
 		showNotification,
 		countdownSettings: {
 			title,
-			volume
+			volume,
+			soundId
 		}
 	} = useGlobalContext();
 
@@ -30,10 +31,7 @@ const CountdownAlarm = () => {
 	}
 
 	useEffect(() => {
-		const audio = new Audio(Clock);
-		audio.loop = true;
-		audio.volume = volume;
-		audio.play();
+		const audio = createAudioAndPlay(soundId, volume, true);
 
 		const notification = showNotification(
 			(`${title}` || "Your timer reached zero") + "!!!",
@@ -48,7 +46,7 @@ const CountdownAlarm = () => {
 				notification.close();
 			}
 		};
-	}, [showNotification, hours, minutes, seconds, title, volume]);
+	}, [showNotification, hours, minutes, seconds, title, volume, soundId]);
 
 	return (
 		<React.Fragment>

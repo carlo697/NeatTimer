@@ -382,11 +382,12 @@ a {
 }
 
 .input-container input[type=text],
-.input-container input[type=number] {
+.input-container input[type=number],
+.input-container select {
 	padding: 0.5em;
 	border-radius: 0;
 	outline: none;
-	border: solid 2px rgb(239, 239, 239);
+	border: solid 2px rgb(200, 200, 200);
 }
 
 input[type=checkbox] {
@@ -418,6 +419,14 @@ input[type=checkbox] {
 
 .time-input {
 	max-width: 5em;
+}
+
+.input-btn-row {
+	display: flex;
+}
+
+.input-btn-row .btn {
+	border-radius: 0;
 }
 
 .modal-center {

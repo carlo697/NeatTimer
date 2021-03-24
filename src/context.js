@@ -21,7 +21,8 @@ export const AppProvider = ({children}) => {
 			hours: 0,
 			minutes: 1,
 			seconds: 0,
-			volume: 1
+			volume: 1,
+			soundId: 0,
 		}
 	);
 	const countdownInitialTime = (

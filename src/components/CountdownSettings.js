@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {useGlobalContext} from "../context";
 import { FaAngleUp } from 'react-icons/fa';
+import SoundInput from "./SoundInput";
 
 const CountdownSettings = () => {
 	const {
@@ -166,6 +167,7 @@ const CountdownSettings = () => {
 					</div>
 				</div>
 			</div>
+			<SoundInput settings={settings} handleChange={handleChange}/>
 			<div className="input-row">
 				<button type="submit" className="btn btn-green" onClick={handleSubmit}>
 					Save
