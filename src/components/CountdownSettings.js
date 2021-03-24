@@ -32,7 +32,7 @@ const CountdownSettings = () => {
 		return result;
 	}
 
-	const {title, hours, seconds, minutes} = settings;
+	const {title, hours, seconds, minutes, volume} = settings;
 
 	const handleChange = e => {
 		const name = e.target.name;
@@ -146,6 +146,23 @@ const CountdownSettings = () => {
 						<button type="button" className="down" onClick={() => addSeconds(-1)}>
 							<FaAngleUp/>
 						</button>
+					</div>
+				</div>
+			</div>
+			<div className="input-row">
+				<div className="input-container">
+					<label htmlFor="volume">Volume</label>
+					<div className="time-input-container">
+						<input
+							type="range"
+							min="0"
+							max="1"
+							step="0.01"
+							id="volume"
+							name="volume"
+							value={volume}
+							onChange={handleChange}
+						/>
 					</div>
 				</div>
 			</div>

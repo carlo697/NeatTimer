@@ -15,7 +15,8 @@ const CountdownAlarm = () => {
 		setCountdownStartTime,
 		showNotification,
 		countdownSettings: {
-			title
+			title,
+			volume
 		}
 	} = useGlobalContext();
 
@@ -31,6 +32,7 @@ const CountdownAlarm = () => {
 	useEffect(() => {
 		const audio = new Audio(Clock);
 		audio.loop = true;
+		audio.volume = volume;
 		audio.play();
 
 		const notification = showNotification(

@@ -381,9 +381,9 @@ a {
 	margin-bottom: 0.5em;
 }
 
-.input-container input {
+.input-container input[type=text],
+.input-container input[type=number] {
 	padding: 0.5em;
-	width: 100%;
 	border-radius: 0;
 	outline: none;
 	border: solid 2px rgb(239, 239, 239);
