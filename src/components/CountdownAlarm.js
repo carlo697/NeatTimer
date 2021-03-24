@@ -34,7 +34,7 @@ const CountdownAlarm = () => {
 		audio.play();
 
 		const notification = showNotification(
-			`${title}!` || "Your timer reached zero!",
+			(`${title}` || "Your timer reached zero") + "!!!",
 			`${hours}:${minutes}:${seconds}`,
 			NotificationIcon,
 		);
