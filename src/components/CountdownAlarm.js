@@ -48,7 +48,7 @@ const CountdownAlarm = () => {
 				notification.close();
 			}
 		};
-	}, [showNotification, hours, minutes, seconds, title]);
+	}, [showNotification, hours, minutes, seconds, title, volume]);
 
 	return (
 		<React.Fragment>

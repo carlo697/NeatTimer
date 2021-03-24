@@ -43,7 +43,7 @@ const AlarmModal = () => {
 				notification.close();
 			}
 		};
-	}, [showNotification, hours, minutes, title]);
+	}, [showNotification, hours, minutes, title, volume]);
 
 	return (
 		<React.Fragment>
