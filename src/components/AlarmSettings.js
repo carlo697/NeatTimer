@@ -11,7 +11,7 @@ const AlarmSettings = ({alarm}) => {
 	const [settings, setSettings] = useState(alarm);
 	const titleRef = useRef(null);
 
-	const {hour, minute, title} = settings;
+	const {hour, minute, title, volume} = settings;
 
 	useEffect(() => {
 		titleRef.current.focus();
@@ -132,6 +132,23 @@ const AlarmSettings = ({alarm}) => {
 						<button type="button" className="down" onClick={() => addMinutes(-1)}>
 							<FaAngleUp/>
 						</button>
+					</div>
+				</div>
+			</div>
+			<div className="input-row">
+				<div className="input-container">
+					<label htmlFor="volume">Volume</label>
+					<div className="time-input-container">
+						<input
+							type="range"
+							min="0"
+							max="1"
+							step="0.01"
+							id="volume"
+							name="volume"
+							value={volume}
+							onChange={handleChange}
+						/>
 					</div>
 				</div>
 			</div>

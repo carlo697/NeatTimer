@@ -16,6 +16,7 @@ const Alarm = () => {
 			title: "New Alarm",
 			hour: 12,
 			minute: 0,
+			volume: 1,
 		};
 
 		openModal({

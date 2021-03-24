@@ -18,6 +18,7 @@ const AlarmModal = () => {
 			title,
 			hour,
 			minute,
+			volume,
 		}
 	} = modal;
 
@@ -26,6 +27,7 @@ const AlarmModal = () => {
 	useEffect(() => {
 		const audio = new Audio(Clock);
 		audio.loop = true;
+		audio.volume = volume;
 		audio.play();
 
 		const notification = showNotification(

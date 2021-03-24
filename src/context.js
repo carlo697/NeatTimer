@@ -125,7 +125,6 @@ export const AppProvider = ({children}) => {
 	}
 
 	const openCountdownAlarm = () => {
-		console.log(countdownSettings.title)
 		openModal({
 			title: countdownSettings.title || "Countdown",
 			content: <CountdownAlarm/>
