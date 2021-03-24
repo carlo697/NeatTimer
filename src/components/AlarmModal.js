@@ -29,7 +29,7 @@ const AlarmModal = () => {
 		audio.play();
 
 		const notification = showNotification(
-			title,
+			(title || "Alarm") + "!!!",
 			`${hours}:${minutes}`,
 			NotificationIcon,
 		);
@@ -46,7 +46,7 @@ const AlarmModal = () => {
 	return (
 		<React.Fragment>
 			<Helmet>
-				<title>{title}!!!</title>
+				<title>{title || "Alarm"}!!!</title>
 			</Helmet>
 			<div className="modal-center">
 				<GiAlarmClock className="modal-alarm-icon"/>

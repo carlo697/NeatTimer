@@ -80,7 +80,7 @@ export const AppProvider = ({children}) => {
 				// has this alarm been played today?
 				if (lastTimePlayed < midnight) {
 					openModal({
-						title: title,
+						title: title || "Alarm",
 						content: <AlarmModal/>,
 						alarm: alarm,
 					});
