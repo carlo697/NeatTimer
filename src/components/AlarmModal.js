@@ -2,9 +2,9 @@ import React, {useEffect} from "react";
 import {getTimeSpanStrings} from "../util.js";
 import {useGlobalContext} from "../context";
 import {GiAlarmClock} from "react-icons/gi";
-import Clock from "../sounds/clock.mp3";
 import NotificationIcon from "../img/notification-icon.png";
 import {Helmet} from "react-helmet-async";
+import {createAudioAndPlay} from "../data/alarmSounds";
 
 const AlarmModal = () => {
 	const {
@@ -19,16 +19,14 @@ const AlarmModal = () => {
 			hour,
 			minute,
 			volume,
+			soundId,
 		}
 	} = modal;
 
 	const {hours, minutes} = getTimeSpanStrings(hour * 3600000 + minute * 60000);
 
 	useEffect(() => {
-		const audio = new Audio(Clock);
-		audio.loop = true;
-		audio.volume = volume;
-		audio.play();
+		const audio = createAudioAndPlay(soundId, volume, true);
 
 		const notification = showNotification(
 			(title || "Alarm") + "!!!",

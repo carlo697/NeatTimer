@@ -4,6 +4,15 @@ import SingleAlarm from "../components/SingleAlarm";
 import {useGlobalContext} from "../context";
 import {Helmet} from "react-helmet-async";
 
+const defaultAlarm = {
+	id: Date.now().toString(),
+	title: "New Alarm",
+	hour: 12,
+	minute: 0,
+	volume: 1,
+	soundId: "0",
+};
+
 const Alarm = () => {
 	const {
 		openModal,
@@ -11,13 +20,7 @@ const Alarm = () => {
 	} = useGlobalContext();
 
 	const clickAdd = () => {
-		const newAlarm = {
-			id: Date.now().toString(),
-			title: "New Alarm",
-			hour: 12,
-			minute: 0,
-			volume: 1,
-		};
+		const newAlarm = {...defaultAlarm};
 
 		openModal({
 			title: "Alarm Settings",

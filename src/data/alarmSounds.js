@@ -3,12 +3,12 @@ import SmokeDetector from "../sounds/smoke_detector.mp3";
 
 const alarmSounds = [
 	{
-		id: "82h1at",
+		id: "0",
 		name: "Clock",
 		url: Clock,
 	},
 	{
-		id: "2hajk4",
+		id: "1",
 		name: "Smoke Detector",
 		url: SmokeDetector,
 	}

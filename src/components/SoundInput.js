@@ -41,7 +41,7 @@ const SoundInput = ({settings, handleChange}) => {
 						onClick={playSound}
 						className="btn small btn-blue"
 					>
-						<ImPlay3/>
+						<ImPlay3 className="icon"/>
 					</button>
 				</div>
 			</div>
