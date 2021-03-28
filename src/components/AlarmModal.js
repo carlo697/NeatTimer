@@ -1,10 +1,10 @@
 import React, {useEffect} from "react";
-import {getTimeSpanStrings} from "../util.js";
-import {useGlobalContext} from "../context";
-import {GiAlarmClock} from "react-icons/gi";
-import NotificationIcon from "../img/notification-icon.png";
 import {Helmet} from "react-helmet-async";
-import {createAudioAndPlay} from "../data/alarmSounds";
+import {getTimeSpanStrings} from "utils";
+import {useGlobalContext} from "context";
+import {GiAlarmClock} from "react-icons/gi";
+import NotificationIcon from "img/notification-icon.png";
+import {createAudioAndPlay} from "data/alarmSounds";
 
 const AlarmModal = () => {
 	const {

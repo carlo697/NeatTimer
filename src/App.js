@@ -1,8 +1,8 @@
 import React from "react";
-import Navbar from "./components/Navbar";
-import Routes from "./components/Routes";
-import Modal from "./components/Modal";
-import Footer from "./components/Footer";
+import Navbar from "components/Navbar";
+import Routes from "components/Routes";
+import Modal from "components/Modal";
+import Footer from "components/Footer";
 
 const App = () => {
 	return (

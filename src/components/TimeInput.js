@@ -1,6 +1,6 @@
 import React from "react";
 import { FaAngleUp } from 'react-icons/fa';
-import {clampInt} from "../util";
+import {clampInt} from "utils";
 
 const TimeInput = ({settings, setSettings, handleChange}) => {
 	const {hours, seconds, minutes} = settings;

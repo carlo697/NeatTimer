@@ -1,7 +1,7 @@
 import React from "react";
-import SettingsModal from "../components/SettingsModal";
-import SingleAlarm from "../components/SingleAlarm";
-import {useGlobalContext} from "../context";
+import SettingsModal from "components/SettingsModal";
+import SingleAlarm from "components/SingleAlarm";
+import {useGlobalContext} from "context";
 import {Helmet} from "react-helmet-async";
 
 const defaultAlarm = {

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
-import {getTimeSpanStrings} from "../util.js";
-import {useGlobalContext} from "../context";
+import {getTimeSpanStrings} from "utils";
+import {useGlobalContext} from "context";
 import {TiEdit} from "react-icons/ti";
 import {ImPause2, ImPlay3} from "react-icons/im";
 import {VscDebugRestart} from "react-icons/vsc";

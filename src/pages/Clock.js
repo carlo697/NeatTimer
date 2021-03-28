@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from "react";
-import {useInterval} from "../util.js";
-import {useGlobalContext} from "../context";
-import ClockSettings from "../components/ClockSettings";
+import {useInterval} from "utils";
+import {useGlobalContext} from "context";
+import ClockSettings from "components/ClockSettings";
 import {TiEdit} from "react-icons/ti";
-import Loading from "../components/Loading";
+import Loading from "components/Loading";
 import {Helmet} from "react-helmet-async";
 
 const timeAPI = "https://worldtimeapi.org/api/ip";

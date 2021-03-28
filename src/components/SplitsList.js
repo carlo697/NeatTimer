@@ -1,6 +1,6 @@
 import React from "react";
-import {useGlobalContext} from "../context";
-import {getTimeSpanStrings} from "../util.js";
+import {useGlobalContext} from "context";
+import {getTimeSpanStrings} from "utils";
 
 const SplitsList = () => {
 	const {splits} = useGlobalContext();

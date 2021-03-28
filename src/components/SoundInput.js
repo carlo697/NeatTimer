@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import alarmSounds, {findSound} from "../data/alarmSounds";
+import alarmSounds, {findSound} from "data/alarmSounds";
 import {ImPlay3} from "react-icons/im";
 
 const SoundInput = ({settings, handleChange}) => {

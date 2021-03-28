@@ -1,7 +1,7 @@
 import React, {useContext, useState, useCallback} from "react";
-import {useLocalStorage, useInterval} from "./util.js";
-import CountdownAlarm from "./components/CountdownAlarm";
-import AlarmModal from "./components/AlarmModal";
+import {useLocalStorage, useInterval} from "utils";
+import CountdownAlarm from "components/CountdownAlarm";
+import AlarmModal from "components/AlarmModal";
 
 const AppContext = React.createContext();
 

@@ -1,6 +1,6 @@
 import React from "react";
-import {getTimeSpanStrings} from "../util.js";
-import {useGlobalContext} from "../context";
+import {getTimeSpanStrings} from "utils";
+import {useGlobalContext} from "context";
 import {AiFillCloseCircle} from "react-icons/ai";
 
 const SingleAlarm = ({id, title, hours, minutes}) => {

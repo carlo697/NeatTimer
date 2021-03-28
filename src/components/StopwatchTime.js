@@ -1,6 +1,6 @@
 import React from "react";
-import {useInterval, useLocalStorage, getTimeSpanStrings} from "../util.js";
-import {useGlobalContext} from "../context";
+import {useInterval, useLocalStorage, getTimeSpanStrings} from "utils";
+import {useGlobalContext} from "context";
 import {ImPause2, ImPlay3} from "react-icons/im";
 import {VscDebugRestart} from "react-icons/vsc";
 

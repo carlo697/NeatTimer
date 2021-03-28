@@ -1,9 +1,9 @@
 import React, {useState} from "react";
-import {useGlobalContext} from "../context";
+import {useGlobalContext} from "context";
 import TitleInput from "./TitleInput";
 import TimeInput from "./TimeInput";
 import SoundInput from "./SoundInput";
-import {clampInt} from "../util";
+import {clampInt} from "utils";
 
 const SettingsModal = ({oldSettings, saveSettings, beforeSave}) => {
 	const {
