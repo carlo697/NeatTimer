@@ -1,5 +1,5 @@
 import React from "react";
-import {Link, useLocation} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import { TiStopwatch } from "react-icons/ti";
 import { GiStopwatch, GiAlarmClock } from "react-icons/gi";
 import { IoIosClock } from "react-icons/io";
@@ -28,8 +28,6 @@ const links = [
 ];
 
 const Navbar = () => {
-	const {pathname} = useLocation();
-
 	return (
 		<nav>
 			<h2 className="nav-logo">
@@ -44,14 +42,16 @@ const Navbar = () => {
 					const {text, to, icon} = link;
 
 					return (
-						<Link
+						<NavLink
 							key={index}
 							to={to}
-							className={"nav-link " + (pathname === to ? "selected" : "")}
+							className="nav-link"
+							exact
+							activeClassName="selected"
 						>
 							<span className="nav-icon">{icon}</span> 
 							<span className="nav-text">{text}</span>
-						</Link>
+						</NavLink>
 					);
 				})
 			}
