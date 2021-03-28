@@ -16,21 +16,24 @@ const AlarmModal = () => {
 	const {
 		alarm: {
 			title,
-			hour,
-			minute,
+			hours,
+			minutes,
 			volume,
 			soundId,
 		}
 	} = modal;
 
-	const {hours, minutes} = getTimeSpanStrings(hour * 3600000 + minute * 60000);
+	const {
+		hours: formattedHours,
+		minutes: formattedMinutes
+	} = getTimeSpanStrings(hours * 3600000 + minutes * 60000);
 
 	useEffect(() => {
 		const audio = createAudioAndPlay(soundId, volume, true);
 
 		const notification = showNotification(
 			(title || "Alarm") + "!!!",
-			`${hours}:${minutes}`,
+			`${formattedHours}:${formattedMinutes}`,
 			NotificationIcon,
 		);
 
@@ -41,7 +44,7 @@ const AlarmModal = () => {
 				notification.close();
 			}
 		};
-	}, [showNotification, hours, minutes, title, volume]);
+	}, [showNotification, formattedHours, formattedMinutes, title, volume, soundId]);
 
 	return (
 		<React.Fragment>
@@ -52,7 +55,7 @@ const AlarmModal = () => {
 				<GiAlarmClock className="modal-alarm-icon"/>
 				<div className="timer">
 					{
-						`${hours}:${minutes}`
+						`${formattedHours}:${formattedMinutes}`
 					}
 				</div>
 			</div>

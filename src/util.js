@@ -34,6 +34,16 @@ export function getTimeSpanStrings(miliseconds) {
 	};
 }
 
+export const clampInt = (value, min, max) => {
+	let result = parseInt(value);
+	result = Math.max(min, result);
+	result = Math.min(max, result);
+	if (isNaN(result)) {
+		return min;
+	}
+	return result;
+}
+
 export function useInterval(callback, delay) {
 	const savedCallback = useRef();
 

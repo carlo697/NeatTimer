@@ -3,14 +3,17 @@ import {getTimeSpanStrings} from "../util.js";
 import {useGlobalContext} from "../context";
 import {AiFillCloseCircle} from "react-icons/ai";
 
-const SingleAlarm = ({id, title, hour, minute}) => {
+const SingleAlarm = ({id, title, hours, minutes}) => {
 	const {
 		removeAlarm,
 	} = useGlobalContext();
 
-	const time = new Date(hour * 3600000 + minute * 60000);
+	const time = new Date(hours * 3600000 + minutes * 60000);
 
-	const {hours, minutes} = getTimeSpanStrings(time);
+	const {
+		hours: formattedHours,
+		minutes:formattedMinutes
+	} = getTimeSpanStrings(time);
 
 	return (
 		<div className="alarm">
@@ -21,7 +24,7 @@ const SingleAlarm = ({id, title, hour, minute}) => {
 			<div className="alarm-body">
 				<div className="time">
 					{
-						`${hours}:${minutes}`
+						`${formattedHours}:${formattedMinutes}`
 					}
 				</div>
 

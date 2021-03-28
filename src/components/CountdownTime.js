@@ -4,7 +4,7 @@ import {useGlobalContext} from "../context";
 import {TiEdit} from "react-icons/ti";
 import {ImPause2, ImPlay3} from "react-icons/im";
 import {VscDebugRestart} from "react-icons/vsc";
-import CountdownSettings from "./CountdownSettings";
+import SettingsModal from "./SettingsModal";
 
 const CountdownTime = () => {
 	const {
@@ -15,9 +15,11 @@ const CountdownTime = () => {
 		setCountdownStartTime,
 		countdownOn,
 		countdownInitialTime,
+		countdownSettings,
 		countdownSettings: {
 			title
-		}
+		},
+		setCountdownSettings
 	} = useGlobalContext();
 	
 	const [areSettingsChanged, setAreSettingsChange] = useState(false);
@@ -47,7 +49,10 @@ const CountdownTime = () => {
 	const edit = () => {
 		openModal({
 			title: "Edit Countdown Timer",
-			content: <CountdownSettings/>,
+			content: <SettingsModal
+				oldSettings={countdownSettings}
+				saveSettings={setCountdownSettings}
+				/>,
 			onSave: () => setAreSettingsChange(true),
 		});
 	}

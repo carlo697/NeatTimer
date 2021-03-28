@@ -66,13 +66,13 @@ export const AppProvider = ({children}) => {
 
 		// check alarms
 		alarms.forEach(alarm => {
-			const {title, hour, minute, lastDate} = alarm;
+			const {title, hours, minutes, lastDate} = alarm;
 
 			// get date at midnight
 			const midnight = new Date().setHours(0,0,0,0);
 
 			const elapsedSinceMidnight = new Date() - midnight;
-			const msToAlarm = hour * 3600000 + minute * 60000;
+			const msToAlarm = hours * 3600000 + minutes * 60000;
 
 			// check if alarm should be played to the user
 			if (elapsedSinceMidnight > msToAlarm) {

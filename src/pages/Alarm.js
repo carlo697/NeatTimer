@@ -1,5 +1,5 @@
 import React from "react";
-import AlarmSettings from "../components/AlarmSettings";
+import SettingsModal from "../components/SettingsModal";
 import SingleAlarm from "../components/SingleAlarm";
 import {useGlobalContext} from "../context";
 import {Helmet} from "react-helmet-async";
@@ -7,8 +7,8 @@ import {Helmet} from "react-helmet-async";
 const defaultAlarm = {
 	id: Date.now().toString(),
 	title: "New Alarm",
-	hour: 12,
-	minute: 0,
+	hours: 12,
+	minutes: 0,
 	volume: 1,
 	soundId: "0",
 };
@@ -16,15 +16,38 @@ const defaultAlarm = {
 const Alarm = () => {
 	const {
 		openModal,
-		alarms
+		alarms,
+		saveAlarm
 	} = useGlobalContext();
+
+	const validateAlarm = (settings) => {
+		// get date at midnight
+		const midnight = new Date().setHours(0,0,0,0);
+
+		// ms since midnight
+		const elapsedSinceMidnight = new Date() - midnight;
+		// ms to play the alarm since midnight
+		const msToAlarm = settings.hours * 3600000 + settings.minutes * 60000;
+
+		const lastDate = elapsedSinceMidnight > msToAlarm ?
+			midnight : midnight - 86400000;
+
+		return {
+			...settings,
+			lastDate: lastDate,
+		}
+	}
 
 	const clickAdd = () => {
 		const newAlarm = {...defaultAlarm};
 
 		openModal({
 			title: "Alarm Settings",
-			content: <AlarmSettings alarm={newAlarm} />,
+			content: <SettingsModal
+				oldSettings={newAlarm}
+				saveSettings={saveAlarm}
+				beforeSave={validateAlarm}
+				/>,
 		});
 	}
 
