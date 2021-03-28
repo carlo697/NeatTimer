@@ -42,11 +42,11 @@ const ClockSettings = () => {
 						/>
 			</div>
 
-			<div className="input-row">
+			<footer>
 				<button type="submit" className="btn btn-green" onClick={handleSubmit}>
 					Save
 				</button>
-			</div>
+			</footer>
 		</form>
 	);
 }
