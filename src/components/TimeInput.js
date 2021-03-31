@@ -5,6 +5,8 @@ import {clampInt} from "utils";
 const TimeInput = ({settings, setSettings, handleChange}) => {
 	const {hours, seconds, minutes} = settings;
 
+	console.log(settings)
+
 	const addHours = (amount) => {
 		const newValue = clampInt(hours + amount, 0, 23);
 		setSettings({...settings, hours: newValue});
@@ -61,7 +63,7 @@ const TimeInput = ({settings, setSettings, handleChange}) => {
 				</div>
 			</div>
 			{
-				settings.seconds && (
+				("seconds" in settings) && (
 					<div className="input-container">
 						<label htmlFor="seconds">Seconds</label>
 						<div className="time-input-container">
